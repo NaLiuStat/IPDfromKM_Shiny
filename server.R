@@ -2,10 +2,12 @@
 
 #### install the necessary libraries ===========================================
 list.of.packages <- c("ggplot2", "survival","boot","DT","shiny","shinyjs","cowplot","ggpubr","gridExtra","devtools")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+#new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+#if(length(new.packages)) install.packages(new.packages)
+install.packages(new.packages)
 lapply(list.of.packages,library,character.only = TRUE)
 devtools::install_github("NaLiuStat/IPDfromKM")
+library(IPDfromKM)
 
 #### the server function ========================================================
 function(input, output, session) {
@@ -126,7 +128,7 @@ function(input, output, session) {
     },
     
     content = function(file) {
-      src <- normalizePath('kmreport.Rmd')
+      src <- normalizePath('./www/kmreport.Rmd')
       ## temporarily switch to the temp dir, in case you do not have write
       ## permission to the current working directory
       owd <- setwd(tempdir())
