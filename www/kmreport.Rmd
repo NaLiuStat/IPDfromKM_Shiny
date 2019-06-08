@@ -1,0 +1,59 @@
+---
+title: "Report -- Reconstruct Individual Patient Data from Published Survival Curves Using IPDfromKM Package"
+author: Na Liu, J. Jack Lee
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+---
+```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
+list.of.packages <- c("ggplot2", "survival","boot","DT","shiny","shinyjs",
+                      "IPDfromKM","cowplot","ggpubr","gridExtra","knitr","devtools")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+lapply(list.of.packages,library,character.only = TRUE)
+```
+
+```{r include=FALSE}
+knitr::opts_chunk$set(fig.width=8, fig.height=5, 
+               echo=FALSE, 
+               warning=FALSE, message=FALSE, 
+               cache=TRUE)
+```
+
+
+The individual patient data (IPD) approach has been considered as the gold standard to improve the reliability of clinical data analysis. This shiny application use R package IPDfromKM to reconstruct the life-table of individual patients from published Kaplan-Meier survival curves. The coordinates of curves can be extracted from digitize software programs like [DigitizeIt](<https://www.digitizeit.de>) or [ScanIt](<https://www.amsterchem.com/scanit.html>). In the help file we showed the optimal procedures to get the high quality data from the survival curves. So we assume the read-in dataset is the good representation of the original published curve.  
+
+
+```{r  include=FALSE,results='hide',tidy=TRUE}
+pre <- eventReactive(input$go,{
+         preprocess(dat=mydata(),trisk=trisk(),nrisk=nrisk(),
+                    totalpts=totalpts(),maxy=maxy())
+         })
+mylist <- eventReactive(input$go,{
+    getIPD(prep=pre(),armind=armind(),tot.events=totalevent())
+  })
+
+```
+
+## Evaluate the Accuracy of Reconstruction
+The reconstruct IPD in CSV file can be download by click the "DownloadIPD" button in the shiny page. Below shows the head of reconstructed IPD data:
+
+
+```{r }
+kable(head(mylist()[[1]]), digits = 2)
+```
+
+We can calculate a new survival curve from the reconstructed IPD using the R survfit function. Then compare the new curves with the read-in dataset.
+
+```{r }
+plotIPD(est=mylist(),ori_dat=mydata(),maxy=maxy())
+```
+
+The summary of estimation accuracy:
+```{r }
+kable(head(mylist()[[8]]), digits = 3)
+```
+
+## Graph Survival Curves
+```{r tidy=TRUE}
+survreport(ipd1=mylist()[[1]],arms=1,interval=6)
+```
+
