@@ -5,11 +5,12 @@ date: '`r format(Sys.time(), "%d %B, %Y")`'
 ---
 ```{r echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 list.of.packages <- c("ggplot2", "survival","boot","DT","shiny","shinyjs",
-                      "IPDfromKM","cowplot","ggpubr","gridExtra","knitr","devtools")
-new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+                      "cowplot","ggpubr","gridExtra","knitr","devtools")
 lapply(list.of.packages,library,character.only = TRUE)
+devtools::install_github("NaLiuStat/IPDfromKM")
+library(IPDfromKM)
 ```
+
 
 ```{r include=FALSE}
 knitr::opts_chunk$set(fig.width=8, fig.height=5, 
