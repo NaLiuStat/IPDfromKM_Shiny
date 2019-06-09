@@ -3,7 +3,7 @@
 list.of.packages <- c("ggplot2", "survival","boot","DT","shiny","shinyjs","ggpubr")
 #new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 #if(length(new.packages)) install.packages(new.packages)
-install.packages(list.of.packages)
+#install.packages(list.of.packages)
 lapply(list.of.packages,library,character.only = TRUE)
 
 ## start the page arrangement =====================================================
