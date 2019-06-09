@@ -1,6 +1,8 @@
 #rm(list=ls(all=TRUE))
 ## install the necessary package ==================================================
-list.of.packages <- c("ggplot2", "survival","boot","DT","shiny","shinyjs","ggpubr")
+list.of.packages <- c("ggplot2", "survival","boot","DT","shiny",
+                       #"shinyjs",
+                      "ggpubr")
 #new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 #if(length(new.packages)) install.packages(new.packages)
 #install.packages(list.of.packages)
