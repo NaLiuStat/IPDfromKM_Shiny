@@ -22,7 +22,7 @@ fluidPage(
   ## sidebar -----------------------------------------------------------------
   sidebarLayout(
     sidebarPanel(
-#      useShinyjs(),
+      useShinyjs(),
       div(
         tags$style(type = "text/css",
                    "label { font-size: 12px; }"
