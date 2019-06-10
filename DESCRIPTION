@@ -1,0 +1,5 @@
+Title: Reconstruct Individual Patient Data (IPD) From KM Survival Curve
+Author: Na liu
+License: GPL-3
+Type: Shiny
+Imports: V8

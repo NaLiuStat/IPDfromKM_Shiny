@@ -4,11 +4,7 @@
 list.of.packages <- c("ggplot2", "survival","boot","DT","shiny",
                       "V8","shinyjs",
                       "cowplot","ggpubr","gridExtra","devtools")
-#new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-#if(length(new.packages)) install.packages(new.packages)
-#install.packages(list.of.packages)
 lapply(list.of.packages,library,character.only = TRUE)
-#devtools::install_github("NaLiuStat/IPDfromKM")
 library(IPDfromKM)
 
 #### the server function ========================================================
