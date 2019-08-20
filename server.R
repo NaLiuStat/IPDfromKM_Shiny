@@ -85,7 +85,7 @@ function(input, output, session) {
   output$samples <- downloadHandler(
     filename = "SampleDatasets.tar",
     content = function(file) {
-      tar(filename,'./www/sampledata/')
+      tar(file,'./www/sampledata/')
     }
   )
   
