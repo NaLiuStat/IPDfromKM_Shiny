@@ -1,7 +1,6 @@
 #rm(list=ls(all=TRUE))
 ## install the necessary package ==================================================
 list.of.packages <- c("ggplot2", "survival","boot","DT","shiny",
-                       "V8","shinyjs",
                       "ggpubr")
 lapply(list.of.packages,library,character.only = TRUE)
 
@@ -22,7 +21,7 @@ fluidPage(
   ## sidebar -----------------------------------------------------------------
   sidebarLayout(
     sidebarPanel(
-      useShinyjs(),
+ #     useShinyjs(),
       div(
         tags$style(type = "text/css",
                    "label { font-size: 12px; }"
@@ -83,7 +82,9 @@ fluidPage(
     ## main panel ----------------------------------------------------------------
     mainPanel(tabsetPanel(
       type = "tabs",
-      
+      tabPanel("Download Sample Dataset ",value=1, fluidRow(
+        downloadButton("samples", "Download Sample Datasets")
+      )),
       tabPanel("Plot Estimation", value=2, fluidRow(
         plotOutput("plot1"),
         dataTableOutput("summary1")
@@ -101,7 +102,7 @@ fluidPage(
                      inline = TRUE),
         downloadButton("report","Download Report")
       )),
-      tabPanel("Help",value=1, 
+      tabPanel("Help",value=6, 
                tags$iframe(style="width: 100%; height: 600px; scrolling=yes",
                            src="KMshinyhelp.pdf")
       )

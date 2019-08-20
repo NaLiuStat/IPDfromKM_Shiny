@@ -2,8 +2,7 @@
 
 #### install the necessary libraries ===========================================
 list.of.packages <- c("ggplot2", "survival","boot","DT","shiny",
-                      "V8","shinyjs",
-                      "cowplot","ggpubr","gridExtra","devtools")
+                      "cowplot","ggpubr","gridExtra")
 lapply(list.of.packages,library,character.only = TRUE)
 library(IPDfromKM)
 
@@ -80,6 +79,17 @@ function(input, output, session) {
       write.csv(mylist()[[1]], file, row.names = FALSE)
     }
   )
+  
+  ## download the sample datasets -------------------------------------------------
+  
+  output$samples <- downloadHandler(
+    filename = "SampleDatasets.tar",
+    content = function(file) {
+      tar(filename,'./www/sampledata/')
+    }
+  )
+  
+  
   
   ## print the CSV file  --------------------------------------------------
   output$table1 <- renderDataTable(round(mylist()[[1]],3))
