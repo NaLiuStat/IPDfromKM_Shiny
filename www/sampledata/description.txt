@@ -1,0 +1,14 @@
+   The datasets were extracted from published locoregional control events in head and neck cancer KM curve. (James A Bonner, Paul M Harari, Jordi Giralt, Nozar Azarnia, Dong M Shin, Roger B Cohen, Christopher U Jones, Ranjan Sur, David Raben, Jacek Jassem, et al. Radiotherapy plus cetuximab for squamous-cell carcinoma of the head and neck. N ew England Journal of M edicine, 354(6):567–578, 2006. ) 
+
+We used ScanIt and DigitizeIt software on the radiation arm curve, and got .txt and .csv files, respectively.  For both datasets, the first columns are the times, and the second columns are the survival rates at those time points (in percentage). And the databases were sorted by time in increasing order. 
+
+The numbers of at risk patients were reported at the months of 
+
+           0, 10, 20, 30, 40, 50, 60, 70 
+
+
+And the numbers of at risk patients were
+
+            213, 122, 80, 51, 30, 10
+
+For more detailed information, please refer the help file of the Shiny application. 
