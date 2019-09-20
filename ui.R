@@ -76,7 +76,7 @@ fluidPage(
                     "NULL"
           ),
           # total number of events ------------------
-          tags$p(tags$h4(tags$strong('The Initial Number of Patients',style = "color:darkblue;"))),
+          tags$p(tags$h4(tags$strong('The Total Number of Events',style = "color:darkblue;"))),
           textInput('totalevent', 'Can be NULL if not available.','NULL')
           ))),
     ## main panel ----------------------------------------------------------------
